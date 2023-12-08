@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\DeMoGCS10035.props" />
+</Project>
