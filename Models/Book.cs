@@ -5,7 +5,7 @@ namespace DeMoGCS10035.Models;
 
 public partial class Book
 {
-    public string Id { get; set; } = null!;
+    public int Id { get; set; }
 
     public string Title { get; set; } = null!;
 
@@ -27,9 +27,9 @@ public partial class Book
 
     public string AuthorId { get; set; } = null!;
 
-    public string OwnerId { get; set; } = null!;
-
     public int PublisherId { get; set; }
+
+    public string? Thumb { get; set; }
 
     public virtual Author Author { get; set; } = null!;
 

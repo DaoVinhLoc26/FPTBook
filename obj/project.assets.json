@@ -11620,11 +11620,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\OneDrive\\Desktop\\FPT-package\\FPTBook\\DeMoGCS10035.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\DeMoGCS10035.csproj",
       "projectName": "DeMoGCS10035",
-      "projectPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\FPT-package\\FPTBook\\DeMoGCS10035.csproj",
+      "projectPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\DeMoGCS10035.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\FPT-package\\FPTBook\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

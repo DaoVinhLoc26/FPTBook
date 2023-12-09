@@ -9,77 +9,89 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DeMoGCS10035
 build_property.RootNamespace = DeMoGCS10035
-build_property.ProjectDir = C:\Users\Admin\OneDrive\Desktop\FPT-package\FPTBook\
+build_property.ProjectDir = C:\Users\Admin\OneDrive\Desktop\BookASM\FPTBook\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Admin\OneDrive\Desktop\FPT-package\FPTBook
+build_property.MSBuildProjectDirectory = C:\Users\Admin\OneDrive\Desktop\BookASM\FPTBook
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Admin/OneDrive/Desktop/FPT-package/FPTBook/Areas/Admin/Views/HomeAdmin/Index.cshtml]
+[C:/Users/Admin/OneDrive/Desktop/BookASM/FPTBook/Areas/Admin/Views/HomeAdmin/AddCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXEFkZENhdGVnb3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/OneDrive/Desktop/BookASM/FPTBook/Areas/Admin/Views/HomeAdmin/Category.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXENhdGVnb3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/OneDrive/Desktop/BookASM/FPTBook/Areas/Admin/Views/HomeAdmin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/Desktop/FPT-package/FPTBook/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml]
+[C:/Users/Admin/OneDrive/Desktop/BookASM/FPTBook/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/Desktop/FPT-package/FPTBook/Views/Auth/Login.cshtml]
+[C:/Users/Admin/OneDrive/Desktop/BookASM/FPTBook/Views/Auth/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/Desktop/FPT-package/FPTBook/Views/Auth/SignUp.cshtml]
+[C:/Users/Admin/OneDrive/Desktop/BookASM/FPTBook/Views/Auth/SignUp.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxTaWduVXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/Desktop/FPT-package/FPTBook/Views/Home/Index.cshtml]
+[C:/Users/Admin/OneDrive/Desktop/BookASM/FPTBook/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/Desktop/FPT-package/FPTBook/Views/Home/Privacy.cshtml]
+[C:/Users/Admin/OneDrive/Desktop/BookASM/FPTBook/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/Desktop/FPT-package/FPTBook/Views/Shared/ClientLayout.cshtml]
+[C:/Users/Admin/OneDrive/Desktop/BookASM/FPTBook/Views/Home/ProductWithCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9kdWN0V2l0aENhdGVnb3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/OneDrive/Desktop/BookASM/FPTBook/Views/Shared/ClientLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENsaWVudExheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/Desktop/FPT-package/FPTBook/Views/Shared/Error.cshtml]
+[C:/Users/Admin/OneDrive/Desktop/BookASM/FPTBook/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/Desktop/FPT-package/FPTBook/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Admin/OneDrive/Desktop/BookASM/FPTBook/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/Desktop/FPT-package/FPTBook/Views/TblBooks/Create.cshtml]
+[C:/Users/Admin/OneDrive/Desktop/BookASM/FPTBook/Views/TblBooks/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsQm9va3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/Desktop/FPT-package/FPTBook/Views/TblBooks/Delete.cshtml]
+[C:/Users/Admin/OneDrive/Desktop/BookASM/FPTBook/Views/TblBooks/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsQm9va3NcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/Desktop/FPT-package/FPTBook/Views/TblBooks/Details.cshtml]
+[C:/Users/Admin/OneDrive/Desktop/BookASM/FPTBook/Views/TblBooks/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsQm9va3NcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/Desktop/FPT-package/FPTBook/Views/TblBooks/Edit.cshtml]
+[C:/Users/Admin/OneDrive/Desktop/BookASM/FPTBook/Views/TblBooks/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsQm9va3NcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/Desktop/FPT-package/FPTBook/Views/TblBooks/Index.cshtml]
+[C:/Users/Admin/OneDrive/Desktop/BookASM/FPTBook/Views/TblBooks/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsQm9va3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/Desktop/FPT-package/FPTBook/Views/_ViewImports.cshtml]
+[C:/Users/Admin/OneDrive/Desktop/BookASM/FPTBook/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/Desktop/FPT-package/FPTBook/Views/_ViewStart.cshtml]
+[C:/Users/Admin/OneDrive/Desktop/BookASM/FPTBook/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/OneDrive/Desktop/FPT-package/FPTBook/Views/Shared/_Layout.cshtml]
+[C:/Users/Admin/OneDrive/Desktop/BookASM/FPTBook/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-6hd8nvuvz4

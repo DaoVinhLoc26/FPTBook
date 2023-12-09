@@ -8,12 +8,12 @@ namespace DeMoGCS10035.Controllers
     public class AuthController : Controller
     {
         FptbookdbContext db = new FptbookdbContext();
-       
+
         [HttpGet]
         [Route("login")]
         public IActionResult Login()
         {
-    
+
             if (HttpContext.Session.GetString("user") == null)
             {
                 return View();
@@ -26,9 +26,9 @@ namespace DeMoGCS10035.Controllers
 
         [HttpPost]
         [Route("login")]
-        public  IActionResult Login(User user)
+        public IActionResult Login(User user)
         {
-            if(HttpContext.Session.GetString("user") == null)
+            if (HttpContext.Session.GetString("user") == null)
             {
                 var loggedInUser = db.Users.FirstOrDefault(u => u.Username == user.Username && u.Password == user.Password);
                 if (loggedInUser != null)
@@ -40,13 +40,13 @@ namespace DeMoGCS10035.Controllers
                     };
                     string jsonSave = JsonConvert.SerializeObject(accessInfoSave);
                     HttpContext.Session.SetString("user", jsonSave);
-                    TempData["Success"] = "Đăng nhập thành công";
+                    TempData["Success"] = "Login Successfully";
                     Console.Write(jsonSave);
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ViewData["Error"] = "Tên đăng nhập hoặc mật khẩu không đúng.";
+                    ViewData["Error"] = "Username or password is not correct";
                     return View();
                 }
             }
@@ -67,17 +67,22 @@ namespace DeMoGCS10035.Controllers
         public IActionResult SignUp(User user)
         {
             var u = db.Users.FirstOrDefault(x => x.Username.Equals(user.Username));
-            if(u == null)
+            if (u == null)
             {
-                db.Add(user);
+                db.Users.Add(user);
                 db.SaveChanges();
-                TempData["Success"] = "Đăng ký thành công";
+                TempData["Success"] = "Regist Successfully";
                 return Redirect("Login");
             }
-            
-            ViewBag.ErrorMessage = "Tài khoản đã tồn tại trong hệ thống, vui lòng sử dụng tài khoản khác";
+
+            ViewBag.ErrorMessage = "This account is already exist";
             return View("SignUp");
         }
-
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            HttpContext.Session.Remove("user");
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

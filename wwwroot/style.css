@@ -2384,7 +2384,9 @@ footer#footer {
   cursor: pointer;
   width: 100%;
 }
-
+.important-height-image{
+    height: 300px !important
+}
 .product-style button.add-to-cart {
   position: absolute;
   background: #000;

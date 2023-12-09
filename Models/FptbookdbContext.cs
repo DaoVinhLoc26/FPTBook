@@ -37,7 +37,7 @@ public partial class FptbookdbContext : DbContext
     {
         modelBuilder.Entity<Author>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Author__3213E83F4665414D");
+            entity.HasKey(e => e.Id).HasName("PK__Author__3213E83FD90EC1FE");
 
             entity.ToTable("Author");
 
@@ -59,14 +59,11 @@ public partial class FptbookdbContext : DbContext
 
         modelBuilder.Entity<Book>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Book__3213E83F44AE2B8C");
+            entity.HasKey(e => e.Id).HasName("PK__Book__3213E83FB94302C0");
 
             entity.ToTable("Book");
 
-            entity.Property(e => e.Id)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("id");
+            entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.AuthorId)
                 .HasMaxLength(5)
                 .IsUnicode(false)
@@ -76,33 +73,33 @@ public partial class FptbookdbContext : DbContext
                 .HasMaxLength(500)
                 .HasColumnName("detailes");
             entity.Property(e => e.Imagel1)
-                .HasMaxLength(30)
+                .HasMaxLength(5000)
                 .IsUnicode(false)
                 .HasColumnName("imagel1");
             entity.Property(e => e.Imagel2)
-                .HasMaxLength(30)
+                .HasMaxLength(5000)
                 .IsUnicode(false)
                 .HasColumnName("imagel2");
             entity.Property(e => e.Imagel3)
-                .HasMaxLength(30)
+                .HasMaxLength(5000)
                 .IsUnicode(false)
                 .HasColumnName("imagel3");
             entity.Property(e => e.Imagel4)
-                .HasMaxLength(30)
+                .HasMaxLength(5000)
                 .IsUnicode(false)
                 .HasColumnName("imagel4");
             entity.Property(e => e.Imagel5)
-                .HasMaxLength(30)
+                .HasMaxLength(5000)
                 .IsUnicode(false)
                 .HasColumnName("imagel5");
-            entity.Property(e => e.OwnerId)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("ownerId");
             entity.Property(e => e.Price)
                 .HasDefaultValueSql("((10))")
                 .HasColumnName("price");
             entity.Property(e => e.PublisherId).HasColumnName("publisherID");
+            entity.Property(e => e.Thumb)
+                .HasMaxLength(5000)
+                .IsUnicode(false)
+                .HasColumnName("thumb");
             entity.Property(e => e.Title)
                 .HasMaxLength(30)
                 .HasColumnName("title");
@@ -125,7 +122,7 @@ public partial class FptbookdbContext : DbContext
 
         modelBuilder.Entity<Cart>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Cart__3213E83F5217E2F8");
+            entity.HasKey(e => e.Id).HasName("PK__Cart__3213E83F0FBB8E1B");
 
             entity.ToTable("Cart");
 
@@ -135,39 +132,36 @@ public partial class FptbookdbContext : DbContext
 
             entity.HasOne(d => d.User).WithMany(p => p.Carts)
                 .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Cart__user_id__5BE2A6F2");
+                .HasConstraintName("FK__Cart__user_id__7F2BE32F");
         });
 
         modelBuilder.Entity<CartItem>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__CartItem__3213E83F389B2594");
+            entity.HasKey(e => e.Id).HasName("PK__CartItem__3213E83F110E0B9C");
 
             entity.ToTable("CartItem");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.BookId)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("book_id");
+            entity.Property(e => e.BookId).HasColumnName("book_id");
             entity.Property(e => e.CartId).HasColumnName("cart_id");
             entity.Property(e => e.Quantity).HasColumnName("quantity");
 
             entity.HasOne(d => d.Book).WithMany(p => p.CartItems)
                 .HasForeignKey(d => d.BookId)
-                .HasConstraintName("FK__CartItem__book_i__5EBF139D");
+                .HasConstraintName("FK__CartItem__book_i__07C12930");
 
             entity.HasOne(d => d.Cart).WithMany(p => p.CartItems)
                 .HasForeignKey(d => d.CartId)
-                .HasConstraintName("FK__CartItem__cart_i__5FB337D6");
+                .HasConstraintName("FK__CartItem__cart_i__08B54D69");
         });
 
         modelBuilder.Entity<Category>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Category__3213E83F77818475");
+            entity.HasKey(e => e.Id).HasName("PK__Category__3213E83FF4C95E5A");
 
             entity.ToTable("Category");
 
-            entity.HasIndex(e => e.Name, "UQ__Category__72E12F1B7F67047B").IsUnique();
+            entity.HasIndex(e => e.Name, "UQ__Category__72E12F1BF39C503C").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Details)
@@ -180,11 +174,11 @@ public partial class FptbookdbContext : DbContext
 
         modelBuilder.Entity<Publisher>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Publishe__3213E83F25FF616D");
+            entity.HasKey(e => e.Id).HasName("PK__Publishe__3213E83FE1E60422");
 
             entity.ToTable("Publisher");
 
-            entity.HasIndex(e => e.Name, "UQ__Publishe__72E12F1B95CFFBF6").IsUnique();
+            entity.HasIndex(e => e.Name, "UQ__Publishe__72E12F1B3A042E64").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Address)
