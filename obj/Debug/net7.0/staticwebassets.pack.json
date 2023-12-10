@@ -513,8 +513,16 @@
       "PackagePath": "staticwebassets\\AdminLayout\\assets\\vendors\\mdi\\fonts\\materialdesignicons-webfont.woff2"
     },
     {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\Image\\012d1d79-2300-4b25-96ba-13d488a134c0.jfif",
+      "PackagePath": "staticwebassets\\Image\\012d1d79-2300-4b25-96ba-13d488a134c0.jfif"
+    },
+    {
       "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\Image\\1559e05b-d793-46e3-bd1b-9c0016906141.jpg",
       "PackagePath": "staticwebassets\\Image\\1559e05b-d793-46e3-bd1b-9c0016906141.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\Image\\3600ceb6-ee10-4d9b-8e27-279558c677cc.jfif",
+      "PackagePath": "staticwebassets\\Image\\3600ceb6-ee10-4d9b-8e27-279558c677cc.jfif"
     },
     {
       "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\Image\\4250804f-8543-406a-a180-3de2e7b74a64.jpg",
@@ -555,6 +563,18 @@
     {
       "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\Image\\e241922e-d372-4659-b36c-e8226ee1623a.jpg",
       "PackagePath": "staticwebassets\\Image\\e241922e-d372-4659-b36c-e8226ee1623a.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\Image\\e7d5157c-6025-4a35-884f-b75523e089de.jpg",
+      "PackagePath": "staticwebassets\\Image\\e7d5157c-6025-4a35-884f-b75523e089de.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\Image\\e9f2833a-6125-4559-b9bd-3085650b24c8.jpg",
+      "PackagePath": "staticwebassets\\Image\\e9f2833a-6125-4559-b9bd-3085650b24c8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\Image\\ec2cc704-eda0-4a27-9119-cac6f6e4fae9.jfif",
+      "PackagePath": "staticwebassets\\Image\\ec2cc704-eda0-4a27-9119-cac6f6e4fae9.jfif"
     },
     {
       "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\Image\\fad4e3b6-f767-447a-b234-3dc48b39bcca.jpg",

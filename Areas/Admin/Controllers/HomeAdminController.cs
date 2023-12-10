@@ -237,5 +237,19 @@ namespace DeMoGCS10035.Areas.Admin.Controllers
             }
             return RedirectToAction("Product");
         }
+        [Route("product/delete/{id}")]
+        [HttpPost]
+        public IActionResult DeleteProduct(int id)
+        {
+            int idTemp = int.Parse(id.ToString());
+            var product = db.Books.FirstOrDefault(product => product.Id.Equals(idTemp));
+            if (product != null)
+            {
+                db.SaveChanges();
+                db.Remove(product);
+                db.SaveChanges();
+            }
+            return Redirect("Book");
+        }
     }
 }
