@@ -1,7 +1,11 @@
 ﻿using DeMoGCS10035.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Hosting.Internal;
 using Newtonsoft.Json;
+using System.Data;
+using static DeMoGCS10035.Helper;
 
 namespace DeMoGCS10035.Areas.Admin.Controllers
 {
@@ -10,6 +14,7 @@ namespace DeMoGCS10035.Areas.Admin.Controllers
     [Route("admin/home")]
     public class HomeAdminController : Controller
     {
+
         FptbookdbContext db = new FptbookdbContext();
         [Route("")]
         [Route("index")]
@@ -99,18 +104,138 @@ namespace DeMoGCS10035.Areas.Admin.Controllers
             db.Categories.Add(category);
             Console.WriteLine("Category name" + category.Details);
             db.SaveChanges();
-            return RedirectToAction("Category"); 
+            return RedirectToAction("Category");
         }
-        [Route("category/edit")]
+        [Route("category/edit/{id}")]
+        [HttpGet]
         public IActionResult EditCategory(int id)
         {
-            var category = db.Categories.Find(id);
-            if (category != null)
-            {
-                return View (category);
-            }
+            var category = db.Categories.FirstOrDefault(category => category.Id.Equals(id));
+            return View(category);
         }
-        //Edit , Delete Category
+        [Route("category/edit/{id}")]
+        [HttpPost]
+        public IActionResult EditCategory(Category category)
+        {
+            var cat = db.Categories.FirstOrDefault(category => category.Id.Equals(category.Id));
+            if (cat != null)
+            {
+                cat.Name = category.Name;
+                cat.Details = category.Details;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Category");
+        }
+        [Route("category/delete/{id}")]
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            int idTemp = int.Parse(id.ToString());
+            var cat = db.Categories.FirstOrDefault(category => category.Id.Equals(idTemp));
+            if (cat != null)
+            {
+                var booksToDelete = db.Books.Where(book => book.CatId == idTemp);
+                db.Books.RemoveRange(booksToDelete);
+                db.SaveChanges();
+                db.Remove(cat);
+                db.SaveChanges();
+            }
+            return Redirect("Category");
+        }
+        [Route("product")]
+        public IActionResult Product()
+        {
+            var listProd = db.Books.ToList();
+            return View(listProd);
+        }
 
+        [Route("product/add")]
+        [HttpGet]
+        public IActionResult AddBook()
+        {
+            ProductViewModel productViewModel = new ProductViewModel();
+            productViewModel.Categories = new SelectList(db.Categories.ToList(), "Id", "Name");
+            productViewModel.Authors = new SelectList(db.Authors.ToList(), "Id", "Name");
+            productViewModel.Publishers = new SelectList(db.Publishers.ToList(), "Id", "Name");
+            return View(productViewModel);
+        }
+        [Route("product/add")]
+        [HttpPost]
+        public IActionResult AddBook(Book book, IFormFile image)
+        {
+            // Check if the model is valid
+
+            
+            if (image != null && image.Length > 0)
+            {
+                var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Image", Guid.NewGuid().ToString() + Path.GetExtension(image.FileName));
+
+                using (var stream = new FileStream(imagePath, FileMode.Create))
+                {
+                    image.CopyTo(stream);
+                }
+
+                // Lưu tên hình ảnh vào thuộc tính của Book
+                book.Thumb = Path.GetFileName(imagePath);
+            }   
+            db.Add(book);
+            db.SaveChanges();
+            return RedirectToAction("Product");
+            // If the model is not valid, redisplay the form with validation errors
+            // Also, make sure to repopulate the Categories property in case of errors
+        }
+        [Route("product/edit/{id}")]
+        [HttpGet]
+        public IActionResult EditProduct(int id)
+        {
+            // Lấy thông tin sách cần sửa
+            var book = db.Books.FirstOrDefault(b => b.Id.Equals(id));
+
+            if (book == null)
+            {
+                // Trả về 404 Not Found nếu không tìm thấy sách
+                return NotFound();
+            }
+
+            ProductViewModel productViewModel = new ProductViewModel
+            {
+                Book = book,
+                Categories = new SelectList(db.Categories.ToList(), "Id", "Name"),
+                Authors = new SelectList(db.Authors.ToList(), "Id", "Name"),
+                Publishers = new SelectList(db.Publishers.ToList(), "Id", "Name")
+            };
+
+            return View(productViewModel);
+        }
+        [Route("product/edit/{id}")]
+        [HttpPost]
+        public IActionResult EditProduct(ProductViewModel editedBook, IFormFile image)
+        {
+            Console.WriteLine(editedBook.Book.Id);
+            var product = db.Books.FirstOrDefault(book => book.Id.Equals(editedBook.Book.Id));
+            Console.WriteLine(product.Id);
+            if (product != null)
+            {
+                product.Title = editedBook.Book.Title;
+                product.AuthorId = editedBook.Book.AuthorId;
+                product.Price = editedBook.Book. Price;
+                product.PublisherId = editedBook.Book.PublisherId;
+                product.Detailes= editedBook.Book.Detailes;
+                if (image != null && image.Length > 0)
+                {
+                    var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Image", Guid.NewGuid().ToString() + Path.GetExtension(image.FileName));
+
+                    using (var stream = new FileStream(imagePath, FileMode.Create))
+                    {
+                        image.CopyTo(stream);
+                    }
+
+                    // Lưu tên hình ảnh vào thuộc tính của Book
+                    product.Thumb = Path.GetFileName(imagePath);
+                }
+                db.SaveChanges();
+            }
+            return RedirectToAction("Product");
+        }
     }
 }

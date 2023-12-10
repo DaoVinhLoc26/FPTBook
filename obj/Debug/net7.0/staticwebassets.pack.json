@@ -513,6 +513,58 @@
       "PackagePath": "staticwebassets\\AdminLayout\\assets\\vendors\\mdi\\fonts\\materialdesignicons-webfont.woff2"
     },
     {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\Image\\1559e05b-d793-46e3-bd1b-9c0016906141.jpg",
+      "PackagePath": "staticwebassets\\Image\\1559e05b-d793-46e3-bd1b-9c0016906141.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\Image\\4250804f-8543-406a-a180-3de2e7b74a64.jpg",
+      "PackagePath": "staticwebassets\\Image\\4250804f-8543-406a-a180-3de2e7b74a64.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\Image\\55d74f48-77bc-4bd9-a014-4926dcce4661.jpg",
+      "PackagePath": "staticwebassets\\Image\\55d74f48-77bc-4bd9-a014-4926dcce4661.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\Image\\67359007-aa9b-4aaa-a505-ca7c411d0b38.jpg",
+      "PackagePath": "staticwebassets\\Image\\67359007-aa9b-4aaa-a505-ca7c411d0b38.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\Image\\9076d462-75d7-4aad-9730-62409be5c64d.jpg",
+      "PackagePath": "staticwebassets\\Image\\9076d462-75d7-4aad-9730-62409be5c64d.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\Image\\aef13232-e9b7-4707-a16d-401e70e83832.jpg",
+      "PackagePath": "staticwebassets\\Image\\aef13232-e9b7-4707-a16d-401e70e83832.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\Image\\af63ef5a-567a-43d7-89d5-907166d51c72.jpg",
+      "PackagePath": "staticwebassets\\Image\\af63ef5a-567a-43d7-89d5-907166d51c72.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\Image\\bd5d8ea3-52f4-498e-9262-18b8eec68dd6.jpg",
+      "PackagePath": "staticwebassets\\Image\\bd5d8ea3-52f4-498e-9262-18b8eec68dd6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\Image\\d47a7660-9e65-457e-81ce-805fcde1aaa0.jpg",
+      "PackagePath": "staticwebassets\\Image\\d47a7660-9e65-457e-81ce-805fcde1aaa0.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\Image\\d8bfe874-848c-4bc5-b2f4-8c6c6704d0b5.png",
+      "PackagePath": "staticwebassets\\Image\\d8bfe874-848c-4bc5-b2f4-8c6c6704d0b5.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\Image\\e241922e-d372-4659-b36c-e8226ee1623a.jpg",
+      "PackagePath": "staticwebassets\\Image\\e241922e-d372-4659-b36c-e8226ee1623a.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\Image\\fad4e3b6-f767-447a-b234-3dc48b39bcca.jpg",
+      "PackagePath": "staticwebassets\\Image\\fad4e3b6-f767-447a-b234-3dc48b39bcca.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\Image\\fde9124d-5403-4b13-81e5-bc0f9a0d4140.jpg",
+      "PackagePath": "staticwebassets\\Image\\fde9124d-5403-4b13-81e5-bc0f9a0d4140.jpg"
+    },
+    {
       "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -559,6 +611,10 @@
     {
       "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\icomoon\\selection.json",
       "PackagePath": "staticwebassets\\icomoon\\selection.json"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\images\\70323549-30da-4cb7-8147-042a793d463d.jpg",
+      "PackagePath": "staticwebassets\\images\\70323549-30da-4cb7-8147-042a793d463d.jpg"
     },
     {
       "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\BookASM\\FPTBook\\wwwroot\\images\\app-store.jpg",

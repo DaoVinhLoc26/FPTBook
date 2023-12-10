@@ -38,10 +38,26 @@
                     @Html.DisplayFor(modelItem => item.Details)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="CategoryEdit/@item.Id">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a href="category/edit/@item.Id">Edit</a>
+                    <a href="#" onclick="confirmDelete(@item.Id)">Delete</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+<script>
+    function confirmDelete(id) {
+        if (confirm('Do you want to delete')) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/admin/category/delete/' + id, true); // Thay ControllerName và Delete bằng tên controller và action xóa của bạn
+            xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+
+            xhr.onload = function () {
+                    alert('Delete Success');
+                location.reload();
+            };
+
+            xhr.send();
+        }
+    }
+</script>

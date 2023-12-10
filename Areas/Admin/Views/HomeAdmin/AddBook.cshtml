@@ -1,0 +1,56 @@
+﻿@model DeMoGCS10035.Models.ProductViewModel
+
+@{
+    ViewData["Title"] = "AddBook";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>AddBook</h1>
+
+<h4>Book</h4>
+<hr />
+<div class="row">
+    @using (Html.BeginForm("AddBook", "HomeAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="form-group">
+            <label>Image</label>
+            <input type="file" name="image" />
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Book.Title)
+            @Html.TextBoxFor(model => model.Book.Title, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Book.Price)
+            @Html.TextBoxFor(model => model.Book.Price, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Book.Detailes)
+            @Html.TextBoxFor(model => model.Book.Detailes, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Book.CatId)
+            @Html.DropDownListFor(model => model.Book.CatId, Model.Categories, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Book.AuthorId)
+            @Html.DropDownListFor(model => model.Book.AuthorId, Model.Authors, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Book.PublisherId)
+            @Html.DropDownListFor(model => model.Book.PublisherId, Model.Publishers, new { @class = "form-control" })
+        </div>
+       
+        <button type="submit" class="btn btn-primary">Submit</button>
+    }
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+    <script>
+        console.log('@Model.Categories.Count()');  // Đếm số lượng mục trong danh sách
+    console.log('@Json.Serialize(Model.Categories)');  // Log danh sách Categories
+</script>

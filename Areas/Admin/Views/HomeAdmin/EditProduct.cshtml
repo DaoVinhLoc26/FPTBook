@@ -1,0 +1,60 @@
+﻿@model DeMoGCS10035.Models.ProductViewModel
+
+@{
+    ViewData["Title"] = "EditProduct";
+       Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+
+    
+}
+
+<h1>EditProduct</h1>
+
+<h4>Book</h4>
+<hr />
+<div class="row"    >
+    <div class="col-md-4">
+        @using (Html.BeginForm("EditProduct", "HomeAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.HiddenFor(model => model.Book.Id) <!-- Cần giữ lại Id của sách để xác định sách cần sửa -->
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Book.Title)
+                @Html.TextBoxFor(model => model.Book.Title, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Book.Price)
+                @Html.TextBoxFor(model => model.Book.Price, new { @class = "form-control" })
+            </div>
+
+            <!-- Thêm các trường khác của sách cần sửa -->
+             <div class="form-group">
+            @Html.LabelFor(model => model.Book.CatId)
+            @Html.DropDownListFor(model => model.Book.CatId, Model.Categories, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Book.AuthorId)
+            @Html.DropDownListFor(model => model.Book.AuthorId, Model.Authors, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Book.PublisherId)
+            @Html.DropDownListFor(model => model.Book.PublisherId, Model.Publishers, new { @class = "form-control" })
+        </div>
+            <div class="form-group">
+                <label for="image">Image</label>
+                <input type="file" name="image" />
+            </div>
+            <img src="@Url.Content("~/Image/" + Model.Book.Thumb)" alt="product-image" />
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary mt-2">Save Changes</button>
+            </div>
+        }
+        <a asp-action="Product">Back to Product List</a>
+</div>
+
+<script>
+
+    console.log(@ViewBag.Product);
+</script>
+
