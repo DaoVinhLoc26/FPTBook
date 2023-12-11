@@ -165,7 +165,7 @@ namespace DeMoGCS10035.Areas.Admin.Controllers
         {
             // Check if the model is valid
 
-            
+
             if (image != null && image.Length > 0)
             {
                 var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Image", Guid.NewGuid().ToString() + Path.GetExtension(image.FileName));
@@ -177,7 +177,7 @@ namespace DeMoGCS10035.Areas.Admin.Controllers
 
                 // Lưu tên hình ảnh vào thuộc tính của Book
                 book.Thumb = Path.GetFileName(imagePath);
-            }   
+            }
             db.Add(book);
             db.SaveChanges();
             return RedirectToAction("Product");
@@ -211,16 +211,14 @@ namespace DeMoGCS10035.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult EditProduct(ProductViewModel editedBook, IFormFile image)
         {
-            Console.WriteLine(editedBook.Book.Id);
             var product = db.Books.FirstOrDefault(book => book.Id.Equals(editedBook.Book.Id));
-            Console.WriteLine(product.Id);
             if (product != null)
             {
                 product.Title = editedBook.Book.Title;
                 product.AuthorId = editedBook.Book.AuthorId;
-                product.Price = editedBook.Book. Price;
+                product.Price = editedBook.Book.Price;
                 product.PublisherId = editedBook.Book.PublisherId;
-                product.Detailes= editedBook.Book.Detailes;
+                product.Detailes = editedBook.Book.Detailes;
                 if (image != null && image.Length > 0)
                 {
                     var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Image", Guid.NewGuid().ToString() + Path.GetExtension(image.FileName));
@@ -250,6 +248,81 @@ namespace DeMoGCS10035.Areas.Admin.Controllers
                 db.SaveChanges();
             }
             return Redirect("Book");
+        }
+        [Route("user")]
+        [HttpGet]
+        public IActionResult UserList()
+        {
+            var listUser = db.Users.ToList();
+            return View(listUser);
+        }
+        [Route("user/add")]
+        [HttpGet]
+        public IActionResult AddUser()
+        {
+            List<string> roles = new List<string> { "User", "Admin" };
+
+            // Truyền danh sách giá trị thông qua ViewBag
+            ViewBag.Roles = new SelectList(roles);
+            return View();
+        }
+        [Route("user/add")]
+        [HttpPost]
+        public IActionResult AddUser(User user)
+        {
+            List<string> roles = new List<string> { "User", "Admin" };
+            ViewBag.Roles = new SelectList(roles);
+            var u = db.Users.FirstOrDefault(x => x.Username.Equals(user.Username));
+            if (u == null)
+            {
+                db.Users.Add(user);
+                db.SaveChanges();
+                return RedirectToAction("UserList");
+            }
+            ViewBag.ErrorMessage = "This account is already exist";
+            return View();
+        }
+        [Route("user/edit/{id}")]
+        [HttpGet]
+        public IActionResult EditUser(int id)
+        {
+            List<string> roles = new List<string> { "User", "Admin" };
+            ViewBag.Roles = new SelectList(roles);
+            var user = db.Users.FirstOrDefault(b => b.Id.Equals(id));
+            return View(user);
+
+
+        }
+        [Route("user/edit/{id}")]
+        [HttpPost]
+        public IActionResult EditUser(User userEd)
+        {
+            var user = db.Users.FirstOrDefault(u => u.Id.Equals(userEd.Id));
+            if (user != null)
+            {
+                user.FullName = userEd.FullName;
+                user.Username = userEd.Username;
+                user.Password = userEd.Password;
+                user.Role = userEd.Role;
+                db.SaveChanges();
+                return RedirectToAction("UserList");
+            }
+            List<string> roles = new List<string> { "User", "Admin" };
+            ViewBag.Roles = new SelectList(roles);
+            return View();
+        }
+        [Route("user/delete/{id}")]
+        [HttpPost]
+        public IActionResult DeleteUser(int id)
+        {
+            int idTemp = int.Parse(id.ToString());
+            var user = db.Users.FirstOrDefault(product => product.Id.Equals(idTemp));
+            if (user != null)
+            {
+                db.Remove(user);
+                db.SaveChanges();
+            }
+            return Redirect("UserList");
         }
     }
 }

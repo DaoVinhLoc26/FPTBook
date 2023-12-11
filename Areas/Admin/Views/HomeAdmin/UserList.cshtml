@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DeMoGCS10035.Models.User>
+
+@{
+    ViewData["Title"] = "UserList";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>UserList</h1>
+
+<p>
+    <a href="/admin/user/add">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td>
+                    <a href="user/edit/@item.Id">Edit</a>
+                    <a href="#" onclick="confirmDelete(@item.Id)">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<script>
+    function confirmDelete(id) {
+        if (confirm('Do you want to delete')) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/admin/user/delete/' + id, true); // Thay ControllerName và Delete bằng tên controller và action xóa của bạn
+            xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+            xhr.onload = function () {
+                alert('Delete Success');
+                location.reload();
+            };
+            xhr.send();
+        }
+    }
+</script>

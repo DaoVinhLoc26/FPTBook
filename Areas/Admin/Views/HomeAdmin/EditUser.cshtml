@@ -1,0 +1,53 @@
+﻿@model DeMoGCS10035.Models.User
+
+@{
+    ViewData["Title"] = "EditUser";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>EditUser</h1>
+
+<h4>User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm("EditUser", "HomeAdmin", FormMethod.Post, new { @class = "pt-3" }))
+        {
+            @Html.HiddenFor(model => model.Id) <!-- Cần giữ lại Id của sách để xác định sách cần sửa -->
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FullName)
+                @Html.TextBoxFor(model => model.FullName, new { @class = "form-control", value=Model.FullName })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Username)
+                @Html.TextBoxFor(model => model.Username, new { @class = "form-control", @readonly = "readonly", value=Model.Username })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password)
+                @Html.PasswordFor(model => model.Password, new { @class = "form-control", value=Model.Username })
+            </div>
+            <!-- Thêm các trường khác của sách cần sửa -->
+        
+            <div class="form-group">
+                @Html.LabelFor(model => model.Role)
+                @Html.DropDownListFor(model => model.Role, (SelectList)ViewBag.Roles, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary mt-2">Save Changes</button>
+            </div>
+        }
+        <a asp-action="UserList">Back to User List</a>
+    </div>
+
+    <script>
+
+    </script>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
