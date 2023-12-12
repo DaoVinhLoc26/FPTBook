@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var userRole = ViewData["Role"] as string;
+    var isAdmin = userRole == "Admin";
+    var isStoreOwner = userRole == "Store Owner";
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -185,12 +191,21 @@
                             <i class="mdi mdi-home menu-icon"></i>
                         </a>
                     </li>
-                 
-                       <li class="nav-item">
+                    @if (isStoreOwner)
+                    {
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/product">
+                            <span class="menu-title">Products</span>
+                            <i class="mdi mdi-home menu-icon"></i>
+                        </a>
+                    </li>
+                    }else if(isAdmin){
+                    <li class="nav-item">
                         <a class="nav-link" href="/admin/category">
                             <span class="menu-title">Category</span>
                             <i class="mdi mdi-home menu-icon"></i>
                         </a>
+                        </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/product">
                             <span class="menu-title">Products</span>
@@ -203,6 +218,7 @@
                             <i class="mdi mdi-home menu-icon"></i>
                         </a>
                     </li>
+                }
                 </ul>
             </nav>
             <!-- partial -->

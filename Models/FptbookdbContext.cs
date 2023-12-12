@@ -217,7 +217,7 @@ public partial class FptbookdbContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("phone");
             entity.Property(e => e.Role)
-                .HasMaxLength(10)
+                .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasDefaultValueSql("('User')")
                 .HasColumnName("role");

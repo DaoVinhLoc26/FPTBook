@@ -32,7 +32,7 @@ namespace DeMoGCS10035.Controllers
                     role = "User"
                 };
                 lastAccessInfo = JsonConvert.DeserializeObject(author, accessInfoSave.GetType());
-                if (lastAccessInfo != null && lastAccessInfo?.role != null && lastAccessInfo?.userName != null && lastAccessInfo?.role == "Admin")
+                if (lastAccessInfo != null && lastAccessInfo?.role != null && lastAccessInfo?.userName != null && (lastAccessInfo?.role == "Admin"|| lastAccessInfo?.role == "Store Owner"))
                 {
                     ViewData["Role"] = lastAccessInfo?.role;
                 }

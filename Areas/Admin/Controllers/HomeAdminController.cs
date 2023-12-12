@@ -32,12 +32,16 @@ namespace DeMoGCS10035.Areas.Admin.Controllers
                 role = "User"
             };
             lastAccessInfo = JsonConvert.DeserializeObject(author, accessInfoSave.GetType());
-            if (lastAccessInfo != null && lastAccessInfo?.role != null && lastAccessInfo?.userName != null && lastAccessInfo?.role == "Admin")
+            if (lastAccessInfo != null && lastAccessInfo?.role != null && lastAccessInfo?.userName != null && (lastAccessInfo?.role == "Admin" || lastAccessInfo?.role == "Store Owner"))
             {
                 ViewData["AdminName"] = lastAccessInfo?.userName;
                 if (lastAccessInfo?.role == "Admin")
                 {
                     ViewData["Role"] = "Admin";
+                }
+                else if (lastAccessInfo?.role == "Store Owner")
+                {
+                    ViewData["Role"] = "Store Owner";
                 }
                 return View();
             }
@@ -145,8 +149,33 @@ namespace DeMoGCS10035.Areas.Admin.Controllers
         [Route("product")]
         public IActionResult Product()
         {
-            var listProd = db.Books.ToList();
-            return View(listProd);
+            var author = HttpContext.Session.GetString("user");
+            if (author == null)
+            {
+                return Redirect("/Login");
+            }
+            dynamic? lastAccessInfo;
+            var accessInfoSave = new
+            {
+                userName = "Demo",
+                role = "User"
+            };
+            lastAccessInfo = JsonConvert.DeserializeObject(author, accessInfoSave.GetType());
+            if (lastAccessInfo != null && lastAccessInfo?.role != null && lastAccessInfo?.userName != null && (lastAccessInfo?.role == "Admin" || lastAccessInfo?.role == "Store Owner"))
+            {
+                ViewData["AdminName"] = lastAccessInfo?.userName;
+                if (lastAccessInfo?.role == "Admin")
+                {
+                    ViewData["Role"] = "Admin";
+                }
+                else if (lastAccessInfo?.role == "Store Owner")
+                {
+                    ViewData["Role"] = "Store Owner";
+                }
+                var listProd = db.Books.ToList();
+                return View(listProd);
+            }
+            return Redirect("Login");
         }
 
         [Route("product/add")]
@@ -164,8 +193,6 @@ namespace DeMoGCS10035.Areas.Admin.Controllers
         public IActionResult AddBook(Book book, IFormFile image)
         {
             // Check if the model is valid
-
-
             if (image != null && image.Length > 0)
             {
                 var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Image", Guid.NewGuid().ToString() + Path.GetExtension(image.FileName));
@@ -253,14 +280,36 @@ namespace DeMoGCS10035.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult UserList()
         {
-            var listUser = db.Users.ToList();
-            return View(listUser);
+            var author = HttpContext.Session.GetString("user");
+            if (author == null)
+            {
+                return Redirect("/Login");
+            }
+            dynamic? lastAccessInfo;
+            var accessInfoSave = new
+            {
+                userName = "Demo",
+                role = "User"
+            };
+            lastAccessInfo = JsonConvert.DeserializeObject(author, accessInfoSave.GetType());
+            if (lastAccessInfo != null && lastAccessInfo?.role != null && lastAccessInfo?.userName != null && lastAccessInfo?.role == "Admin")
+            {
+                ViewData["AdminName"] = lastAccessInfo?.userName;
+                if (lastAccessInfo?.role == "Admin")
+                {
+                    ViewData["Role"] = "Admin";
+                    var listUser = db.Users.ToList();
+                    return View(listUser);
+                }
+            }
+            return Redirect("/login");
+          
         }
         [Route("user/add")]
         [HttpGet]
         public IActionResult AddUser()
         {
-            List<string> roles = new List<string> { "User", "Admin" };
+            List<string> roles = new List<string> { "Store Owner" };
 
             // Truyền danh sách giá trị thông qua ViewBag
             ViewBag.Roles = new SelectList(roles);
@@ -270,7 +319,7 @@ namespace DeMoGCS10035.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult AddUser(User user)
         {
-            List<string> roles = new List<string> { "User", "Admin" };
+            List<string> roles = new List<string> { "Store Owner" };
             ViewBag.Roles = new SelectList(roles);
             var u = db.Users.FirstOrDefault(x => x.Username.Equals(user.Username));
             if (u == null)
@@ -286,12 +335,10 @@ namespace DeMoGCS10035.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult EditUser(int id)
         {
-            List<string> roles = new List<string> { "User", "Admin" };
+            List<string> roles = new List<string> { "Store Owner" };
             ViewBag.Roles = new SelectList(roles);
             var user = db.Users.FirstOrDefault(b => b.Id.Equals(id));
             return View(user);
-
-
         }
         [Route("user/edit/{id}")]
         [HttpPost]
