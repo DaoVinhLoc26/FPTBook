@@ -1,5 +1,6 @@
-﻿@model IEnumerable<DeMoGCS10035.Models.Book>
-
+﻿@using DeMoGCS10035.Models
+@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<Book>;
 @{
     ViewData["Title"] = "Product";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
@@ -17,19 +18,19 @@
             Thumbnail
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            Title
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Price)
+           Price
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Detailes)
+           Detail
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Author)
+            Author
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Publisher)
+           Publisher
         </th>
         <th></th>
     </tr>
@@ -64,6 +65,9 @@
     }
 </tbody>
 </table>
+<div class="product__pagination">
+    @Html.PagedListPager(Model, page => Url.Action("Product", new { page = page }))
+</div>
 <script>
     function confirmDelete(id) {
         if (confirm('Do you want to delete')) {

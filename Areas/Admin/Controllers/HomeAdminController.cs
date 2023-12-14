@@ -1,10 +1,13 @@
-﻿using DeMoGCS10035.Models;
+﻿using Azure;
+using DeMoGCS10035.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting.Internal;
 using Newtonsoft.Json;
 using System.Data;
+using X.PagedList;
 using static DeMoGCS10035.Helper;
 
 namespace DeMoGCS10035.Areas.Admin.Controllers
@@ -147,8 +150,12 @@ namespace DeMoGCS10035.Areas.Admin.Controllers
             return Redirect("Category");
         }
         [Route("product")]
-        public IActionResult Product()
+        public IActionResult Product(int? page)
         {
+            int pageSize = 4;
+            int pageNumber = page == null || page < 0 ? 1 : page.Value;
+            var listprod = db.Books.AsNoTracking().OrderBy(x => x.Id);
+            PagedList<Book> prodList = new PagedList<Book>(listprod, pageNumber, pageSize);
             var author = HttpContext.Session.GetString("user");
             if (author == null)
             {
@@ -172,8 +179,7 @@ namespace DeMoGCS10035.Areas.Admin.Controllers
                 {
                     ViewData["Role"] = "Store Owner";
                 }
-                var listProd = db.Books.ToList();
-                return View(listProd);
+                return View(prodList);
             }
             return Redirect("Login");
         }

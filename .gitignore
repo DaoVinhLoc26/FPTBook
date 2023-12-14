@@ -13,3 +13,10 @@
 **/.history
 
 # End of https://www.gitignore.io/api/visualstudiocode
+
+#VisualStudioCode
+*.vsidx
+
+#DB
+*.mdf
+*.ldf

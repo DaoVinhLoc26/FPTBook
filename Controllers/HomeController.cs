@@ -1,7 +1,9 @@
 ﻿using DeMoGCS10035.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using X.PagedList;
 
 namespace DeMoGCS10035.Controllers
 {
@@ -15,10 +17,12 @@ namespace DeMoGCS10035.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
-            var listprod = db.Books.ToList();
-          
+            int pageSize = 4;
+            int pageNumber = page == null || page < 0 ? 1 : page.Value;
+            var listprod = db.Books.AsNoTracking().OrderBy(x => x.Id);
+            PagedList<Book> prodList = new PagedList<Book>(listprod,pageNumber,pageSize);
             string successMessage = TempData["Success"] as string;
             ViewData["Success"] = successMessage;
             var author = HttpContext.Session.GetString("user");
@@ -42,8 +46,7 @@ namespace DeMoGCS10035.Controllers
             {
                 ViewData["Login"] = null;
             }
-            
-            return View(listprod);
+            return View(prodList);
         }
         public IActionResult Privacy()
         {
@@ -59,6 +62,14 @@ namespace DeMoGCS10035.Controllers
             Console.WriteLine("1");
             return View(listprod);
         }
+
+        [Route("product/{id}")]
+        public IActionResult Detail(int id)
+        {
+            var productDetail = db.Books.FirstOrDefault(x => x.Id.Equals(Convert.ToInt32(id)));
+            return View(productDetail);
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

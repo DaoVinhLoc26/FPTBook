@@ -2,8 +2,8 @@
     ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/ClientLayout.cshtml";
 }
-@model List<Book>
-
+@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<Book>;
 <section id="popular-books" class="bookshelf py-5 my-5">
     <div class="container">
         <div class="row">
@@ -23,7 +23,9 @@
                                 <div class="col-md-3">
                                     <div class="product-item">
                                         <figure class="product-style">
+                                            <a href="product/@item.Id">
                                             <img src="@Url.Content("~/Image/" + item.Thumb)" alt="product-image important-height-image" />
+                                            </a>
                                             <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
                                                 Add to
                                                 Cart
@@ -36,6 +38,9 @@
                                     </div>
                                 </div>
                             }
+                        </div>
+                        <div class="product__pagination">
+                        @Html.PagedListPager(Model,page=>Url.Action("Index",new {page=page}))
                         </div>
                     </div>
                     </div>

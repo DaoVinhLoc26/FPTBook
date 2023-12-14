@@ -1,0 +1,60 @@
+﻿@model DeMoGCS10035.Models.Book
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/ClientLayout.cshtml";
+}
+
+<h1>Detail</h1>
+
+<div style="padding:40px">
+    <h4>Book</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Detailes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Detailes)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Thumb)
+        </dt>
+        <dt class = "col-sm-2">
+        <img src="@Url.Content("~/Image/" + Model.Thumb)" alt="product-image important-height-image" style="width:150px; height:150px" />
+        </dt>
+        <dt class = "col-sm-12">
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+        <dd class = "col-sm-12">
+            @Html.DisplayFor(model => model.AuthorId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CatId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Publisher)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PublisherId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to Home</a>
+</div>

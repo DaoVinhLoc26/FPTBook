@@ -31,13 +31,13 @@ public partial class FptbookdbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=MSI;Initial Catalog=FPTBOOKDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        => optionsBuilder.UseSqlServer("Data Source=LOKI\\MSSQLSERVER01;Initial Catalog=FPTBOOKDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Author>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Author__3213E83FD90EC1FE");
+            entity.HasKey(e => e.Id).HasName("PK__Author__3213E83F6F55B3CF");
 
             entity.ToTable("Author");
 
@@ -59,7 +59,7 @@ public partial class FptbookdbContext : DbContext
 
         modelBuilder.Entity<Book>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Book__3213E83FB94302C0");
+            entity.HasKey(e => e.Id).HasName("PK__Book__3213E83F2253F951");
 
             entity.ToTable("Book");
 
@@ -122,7 +122,7 @@ public partial class FptbookdbContext : DbContext
 
         modelBuilder.Entity<Cart>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Cart__3213E83F0FBB8E1B");
+            entity.HasKey(e => e.Id).HasName("PK__Cart__3213E83FD58ACCC3");
 
             entity.ToTable("Cart");
 
@@ -132,12 +132,12 @@ public partial class FptbookdbContext : DbContext
 
             entity.HasOne(d => d.User).WithMany(p => p.Carts)
                 .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Cart__user_id__7F2BE32F");
+                .HasConstraintName("FK__Cart__user_id__46E78A0C");
         });
 
         modelBuilder.Entity<CartItem>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__CartItem__3213E83F110E0B9C");
+            entity.HasKey(e => e.Id).HasName("PK__CartItem__3213E83F217E9368");
 
             entity.ToTable("CartItem");
 
@@ -148,20 +148,20 @@ public partial class FptbookdbContext : DbContext
 
             entity.HasOne(d => d.Book).WithMany(p => p.CartItems)
                 .HasForeignKey(d => d.BookId)
-                .HasConstraintName("FK__CartItem__book_i__07C12930");
+                .HasConstraintName("FK__CartItem__book_i__49C3F6B7");
 
             entity.HasOne(d => d.Cart).WithMany(p => p.CartItems)
                 .HasForeignKey(d => d.CartId)
-                .HasConstraintName("FK__CartItem__cart_i__08B54D69");
+                .HasConstraintName("FK__CartItem__cart_i__4AB81AF0");
         });
 
         modelBuilder.Entity<Category>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Category__3213E83FF4C95E5A");
+            entity.HasKey(e => e.Id).HasName("PK__Category__3213E83F1E46F2E8");
 
             entity.ToTable("Category");
 
-            entity.HasIndex(e => e.Name, "UQ__Category__72E12F1BF39C503C").IsUnique();
+            entity.HasIndex(e => e.Name, "UQ__Category__72E12F1B3675C361").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Details)
@@ -174,11 +174,11 @@ public partial class FptbookdbContext : DbContext
 
         modelBuilder.Entity<Publisher>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Publishe__3213E83FE1E60422");
+            entity.HasKey(e => e.Id).HasName("PK__Publishe__3213E83F5E3B1015");
 
             entity.ToTable("Publisher");
 
-            entity.HasIndex(e => e.Name, "UQ__Publishe__72E12F1B3A042E64").IsUnique();
+            entity.HasIndex(e => e.Name, "UQ__Publishe__72E12F1B19D71AA3").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Address)
@@ -194,13 +194,14 @@ public partial class FptbookdbContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__User__3213E83F318391C5");
+            entity.HasKey(e => e.Id).HasName("PK__User__3213E83F9D7B09D8");
 
             entity.ToTable("User");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Address)
                 .HasMaxLength(50)
+                .IsUnicode(false)
                 .HasColumnName("address");
             entity.Property(e => e.Details)
                 .HasMaxLength(300)
